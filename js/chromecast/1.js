@@ -88,17 +88,19 @@ function onInitSuccess() {
  */
 function launchApp() {
     console.log('launchApp(): Trying to launch Application. Requesting session connection with receiver.');
-    chrome.cast.requestSession(onRequestSessionSuccess, onLaunchError);
+    chrome.cast.requestSession(onLaunchAppSuccess, onLaunchError);
 }
 
 /**
  * callback on success for requestSession call
  * @param {Object} e A non-null new session.
- * @this onRequestSesionSuccess
+ * @this onLaunchAppSuccess
  */
-function onRequestSessionSuccess(e) {
+function onLaunchAppSuccess(e) {
     console.log('onRequestSessionSuccess() : Session establishment, was successful, received session id:  ' + e.sessionId);
     session = e;
+    $("#launchApp").hide();
+    $("#stopApp").show();
 }
 
 /**
@@ -123,6 +125,8 @@ function onError(e) {
 function stopApp() {
     console.log("stopApp(): Trying to stop session.")
     session.stop(onStopAppSuccess, onError);
+    $("#launchApp").show();
+    $("#stopApp").hide();
 }
 
 /**
@@ -131,3 +135,12 @@ function stopApp() {
 function onStopAppSuccess() {
     console.log("session stopped successfully.");
 }
+
+function hideLaunchAppAndShowStopApp() {
+    $("#launchApp").hide();
+}
+
+$(document).ready(function () {
+    console.log("All call backs have been initialized");
+    $("#stopApp").hide();
+});

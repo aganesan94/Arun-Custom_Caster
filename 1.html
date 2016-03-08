@@ -1,5 +1,6 @@
 <!--
-The following file demonstrates how an application can be loaded and stopped.
+The following file demonstrates how an application can be loaded and stopped. if the launch is successful,
+the stop app will show and vice versa.
 -->
 <!doctype html>
 <!--[if lt IE 7]>
@@ -28,7 +29,7 @@ The following file demonstrates how an application can be loaded and stopped.
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Include chrome cast javascript files then include custom javascript file-->
     <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
     <script src="js/chromecast/1.js"></script>
@@ -51,8 +52,8 @@ The following file demonstrates how an application can be loaded and stopped.
 <div style="margin:10px;">
     <div class="container">
         <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default" onclick="launchApp();">Launch App</button>
-            <button type="button" class="btn btn-default" onclick="stopApp();">Stop App</button>
+            <button type="button" class="btn btn-default" id="launchApp" onclick="launchApp();">Launch App</button>
+            <button type="button" class="btn btn-default" id="stopApp" onclick="stopApp();">Stop App</button>
         </div>
     </div>
 
